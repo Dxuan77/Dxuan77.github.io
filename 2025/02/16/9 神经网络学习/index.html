@@ -19,23 +19,45 @@
   <meta name="author" content="Dongxuan Liu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="9 神经网络学习9.1 代价函数分类问题：二元分类、多分类 我们用L表示总层数，$s_l$表示第$l$层的神经元个数，常用$s_l$或$K$表示最后一层神经元的个数。 在二元分类中，输出$y&#x3D;0 or 1\in\mathbb{R}$，$s_l&#x3D;K&#x3D;1$.在多元分类中，输出$y\in\mathbb{R}^K$, $s_l&#x3D;K$, $(K \ge3)$.   神">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2025/01/24/hello-world/index.html">
+<meta property="og:title" content="9.神经网络学习">
+<meta property="og:url" content="http://example.com/2025/02/16/9%20%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Dxuan&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="9 神经网络学习9.1 代价函数分类问题：二元分类、多分类 我们用L表示总层数，$s_l$表示第$l$层的神经元个数，常用$s_l$或$K$表示最后一层神经元的个数。 在二元分类中，输出$y&#x3D;0 or 1\in\mathbb{R}$，$s_l&#x3D;K&#x3D;1$.在多元分类中，输出$y\in\mathbb{R}^K$, $s_l&#x3D;K$, $(K \ge3)$.   神">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-24T04:44:13.658Z">
-<meta property="article:modified_time" content="2025-04-15T06:01:12.182Z">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250113140327471.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250113165449147.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250113171928633.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250113171510938.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250114192316746.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250114194028905.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250114201012101.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250114201230325.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250114195858686.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205193027431.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205194000939.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205194407308.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205195155303.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205195717287.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205201534850.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205202431990.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205203213254.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205204122375.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205204904433.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205205656384.png">
+<meta property="article:published_time" content="2025-02-16T02:00:09.000Z">
+<meta property="article:modified_time" content="2025-04-15T07:33:18.524Z">
 <meta property="article:author" content="Dongxuan Liu">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250113140327471.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Hello World - Dxuan&#39;s Blog</title>
+  <title>9.神经网络学习 - Dxuan&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +223,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="9.神经网络学习"></span>
           
         </div>
 
@@ -212,8 +234,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-24 12:44" pubdate>
-          2025年1月24日 下午
+        <time datetime="2025-02-16 10:00" pubdate>
+          2025年2月16日 上午
         </time>
       </span>
     
@@ -225,7 +247,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          全文共有 18 字
+          全文共有 1.7k 字
         
       </span>
     
@@ -237,7 +259,7 @@
         
         
           <!-- compatible with older versions-->
-          预计阅读时间为 1 分钟
+          预计阅读时间为 14 分钟
         
       </span>
     
@@ -283,25 +305,86 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">9.神经网络学习</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="9-神经网络学习"><a href="#9-神经网络学习" class="headerlink" title="9 神经网络学习"></a>9 神经网络学习</h1><h2 id="9-1-代价函数"><a href="#9-1-代价函数" class="headerlink" title="9.1 代价函数"></a>9.1 代价函数</h2><p>分类问题：二元分类、多分类</p>
+<p>我们用L表示总层数，$s_l$表示第$l$层的神经元个数，常用$s_l$或$K$表示最后一层神经元的个数。</p>
+<p>在二元分类中，输出$y&#x3D;0 or 1\in\mathbb{R}$，$s_l&#x3D;K&#x3D;1$.在多元分类中，输出$y\in\mathbb{R}^K$, $s_l&#x3D;K$, $(K \ge3)$.</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250113140327471.png" alt="image-20250113140327471" style="zoom:50%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>神经网络中我们的代价函数与逻辑回归中的代价函数类似，我们的输出$h_\Theta(x)\in\mathbb{R}^K$,其中$(h_\Theta(x))_i$表示输出向量中第i项的值。</p>
+<p>首先前面的项多了$\sum_{k&#x3D;1}^{K}$表示将输出层<strong>每个</strong>神经元的预测值与真实值之间的距离加和，后面项是规格化项，这里通常规定不计算每一层的$\theta_0$，然后将每一层的$\theta$矩阵平方加和。即所有参数的平方和。（计算$\theta_0$也是可以的，但通常不这样做）</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250113165449147.png" alt="image-20250113165449147" style="zoom:50%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<h2 id="9-2-反向传播算法"><a href="#9-2-反向传播算法" class="headerlink" title="9.2 反向传播算法"></a>9.2 反向传播算法</h2><p>为了执行梯度下降算法，我们需要计算$J(\Theta)$和$J(\Theta)$对各个参数$\Theta_{ij}^{(l)}$的偏导。</p>
+<p>假设我们的网络如右图，只有一个样本$(x,y)$时我们先进行前向传播，计算出以下：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250113171928633.png" alt="image-20250113171928633" style="zoom:50%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<p>定义$\delta_j^{(l)}$表示第l层第j个节点的误差。则$\delta_j^{(4)}&#x3D;(h_\Theta(x))_j-y_j&#x3D;a_j^{(4)}-y_j$。我们也可以写成向量的形式$\delta^{(4)}&#x3D;a^{(4)}-y，\delta^{(4)},a^{(4)},y\in\mathbb{R}^K$，第3层的误差项为$\delta^{(3)}&#x3D;(\Theta^{(3)})^T\delta^{(4)}.<em>g’(z^{(3)})$,其中$g’(z^{(3)})$是sigmoid函数的导数，经推导sigmoid函数导数有一个特点：$g’(z^{(3)})&#x3D;a^{(3)}.</em>(1-a^{(3)})$。</p>
+<p>同理$\delta^{(2)}&#x3D;(\Theta^{(2)})^T\delta^{(3)}.*g’(z^{(2)})$, $g’(z^{(2)})$类似.注意第一层没有误差项，因为我们不想改变我们的输入$x$.</p>
+<p>当我们忽略正则化项，即当$\lambda&#x3D;0$时。经推导，$J(\Theta)$对各矩阵参数$\Theta_{ij}^{(l)}$的偏导为$a_j^{(l)}\delta_i^{(l+1)}$.</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250113171510938.png" alt="image-20250113171510938" style="zoom: 33%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>下面是反向传播算法的伪代码。当有m个样本时，变量i遍历每个样本，令$a^{(1)}&#x3D;x^{(i)}$,然后执行前向传播计算出$a^{(l)}$,再使用$y^{(i)}$计算出$\delta^{(L)}$，然后进行反向传播计算出$\delta^{(L-1)},\delta^{(L-2)}…\delta^{(2)}$. 使用$\Delta_{ij}^{(l)}$累加各偏导数项$a_j^{(l)}\delta_i^{(l+1)}$，写成向量的形式即为$\Delta^{(l)}:&#x3D;\Delta^{(l)}+\delta^{(l+1)}(a^{(l)})^T$.</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250114192316746.png" alt="image-20250114192316746" style="zoom: 80%;" />
 
+<p>当$j&#x3D;0$时没有偏差项。计算代价函数的偏导数，公式如下：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250114194028905.png" alt="image-20250114194028905" style="zoom:80%;" />
+
+<h2 id="9-3-理解反向传播"><a href="#9-3-理解反向传播" class="headerlink" title="9.3 理解反向传播"></a>9.3 理解反向传播</h2><p>当只有一个输出单元时，前向传播的过程：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250114201012101.png" alt="image-20250114201012101" style="zoom:80%;" />
+
+<p>当只考虑一个样本i时。我们简化代价函数，去掉正则化项，得到 cost(i)：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250114201230325.png" alt="image-20250114201230325" style="zoom:80%;" />
+
+<p>反向传播的过程：$\delta^{(4)}_1&#x3D;y^{(i)}-a^{(i)}<em>1$。$\delta^{(3)}<em>2&#x3D;\Theta</em>{12}^{(3)}\delta_1^{(4)},\delta^{(2)}<em>2&#x3D;\Theta</em>{12}^{(2)}\delta_1^{(3)}+\Theta</em>{22}^{(2)}\delta_2^{(3)}$.</p>
+<p>即对于每一层来说，$\delta$分量都等于后面一层所有的$\delta$的加权和，其中权值就是参数$\Theta$:$\delta_j^{(l)}&#x3D;\sum_{k&#x3D;1}^{s_{(l+1)}-1}\Theta_{kj}^{(l)}\delta_k^{(l+1)}$</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250114195858686.png" alt="image-20250114195858686" style="zoom:80%;" />
+
+<h2 id="9-4-展开参数"><a href="#9-4-展开参数" class="headerlink" title="9.4 展开参数"></a>9.4 展开参数</h2><p>使用矩阵表达式的好处：更方便进行前向和反向传播；使用向量表达式的好处：优化算法通常需要将参数展开成长向量的形式。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205193027431.png" alt="image-20250205193027431" style="zoom:50%;" />
+
+<h2 id="9-5-梯度检验"><a href="#9-5-梯度检验" class="headerlink" title="9.5 梯度检验"></a>9.5 梯度检验</h2><p>在反向传播中，因为其复杂性通常会产生一些bug，虽然代价函数$J(\theta)$也在下降，但最终的代价可能比在没有bug的情况下高出一个量级，通常使用梯度检验来解决这个问题。</p>
+<p>我们可以在$\theta$点两侧加减$\epsilon$的距离，根据斜率估计出$\theta$点的导数。$\epsilon$取很小的值。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205194000939.png" alt="image-20250205194000939" style="zoom: 33%;" />
+
+<p>当有多个参数时，例如当$\theta \in \mathbb{R}^n$时，长度为n的向量。我们可以分别在各参数上加减$\epsilon$，来计算代价函数对各参数的偏导数。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205194407308.png" alt="image-20250205194407308" style="zoom: 33%;" />
+
+<p>算法实现如下：对每个参数分别计算偏导得到gradApprox，再与反向传播计算得到的偏导Dvec进行比较，当两者较为接近时，说明反向传播的实现是正确的。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205195155303.png" alt="image-20250205195155303" style="zoom:33%;" />
+
+<p>应用步骤：1.先反向传播计算DVec 2.数值估计计算gradApprox 3.确保两者数值差距较小，否则说明反向传播算法有错误。</p>
+<p>梯度检验计算量大，准确性高；反向传播计算速度更快，但实现复杂可能出现问题。所以当我们确定下来反向传播没问题时，正式训练之前需要关闭梯度检验，否则训练过程会很慢。（只在测试时进行梯度检验）</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205195717287.png" alt="image-20250205195717287" style="zoom:33%;" />
+
+<h2 id="9-6-随机初始化"><a href="#9-6-随机初始化" class="headerlink" title="9.6 随机初始化"></a>9.6 随机初始化</h2><p>在之前的逻辑回归中，我们将参数$\theta$全部初始化为0。在神经网络中，此方法不可行：如果第一层参数$\theta$都相同(不管是不是0)，意味着第二层的所有激活单元的值会完全相同。因为初始权重相等，权重更新值也相等。这意味着最后的逻辑回归单元只能得到一个特征。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205201534850.png" alt="image-20250205201534850" style="zoom:33%;" />
+
+<p>为了解决这个问题，在神经网络中通常将参数初始化为$[-\epsilon,\epsilon]$之间的随机值。参考代码如下：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205202431990.png" alt="image-20250205202431990" style="zoom:33%;" />
+
+<h2 id="9-7-综合起来"><a href="#9-7-综合起来" class="headerlink" title="9.7 综合起来"></a>9.7 综合起来</h2><p>神经网络训练的步骤如下：</p>
+<p><strong>0.选择网络结构</strong>：确定输入单元数、输出单元数、隐藏层个数、每个隐藏层的单元数。</p>
+<p>输入单元数通常等于特征向量$x$的维度。输出单元数通常等于待分类的类别数。隐藏层数：比较合理的是1层隐藏层，或者多于1层且每层的单元数相等。隐藏层的单元数通常等于输入单元数或大几倍。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205203213254.png" alt="image-20250205203213254" style="zoom:33%;" />
+
+<p><strong>1.随机初始化参数</strong></p>
+<p><strong>2.应用前向传播计算出</strong>$h_\theta(x^{(i)})$</p>
+<p><strong>3.计算代价函数$J(\Theta)$</strong></p>
+<p><strong>4.应用反向传播计算偏导数</strong></p>
+<p><strong>5.利用梯度检测方法检验这些偏导数</strong>：检验通过后关闭</p>
+<p><strong>6.使用优化算法来最小代价函数</strong>：反向传播计算出偏导数，使用优化算法最小化代价函数$J(\Theta)$.</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205204122375.png" alt="image-20250205204122375" style="zoom:33%;" />
+
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205204904433.png" alt="image-20250205204904433" style="zoom:33%;" />
+
+<p>代价函数不是一个凸函数，我们使用优化算法通常可以到达一个局部最小值点。</p>
+<p>反向传播算法计算出梯度下降的方向，优化算法让代价函数沿着这个方向一点点的下降。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250205205656384.png" alt="image-20250205205656384" style="zoom:33%;" />
                 
               </div>
             
@@ -309,6 +392,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">吴恩达机器学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="print-no-link">#机器学习</a>
+      
+    </div>
   
 </div>
 
@@ -318,8 +429,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2025/01/24/hello-world/</div>
+      <div>9.神经网络学习</div>
+      <div>http://example.com/2025/02/16/9 神经网络学习/</div>
     </div>
     <div class="license-meta">
       
@@ -331,7 +442,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月24日</div>
+          <div>2025年2月16日</div>
         </div>
       
       
@@ -358,6 +469,29 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/02/16/10%20%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BB%BA%E8%AE%AE/" title="10.应用机器学习的建议">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">10.应用机器学习的建议</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/16/8%20%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/" title="8.神经网络学习">
+                        <span class="hidden-mobile">8.神经网络学习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 

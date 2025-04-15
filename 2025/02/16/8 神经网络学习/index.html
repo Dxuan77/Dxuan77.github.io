@@ -19,23 +19,38 @@
   <meta name="author" content="Dongxuan Liu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="8 神经网络学习8.1 非线性假设当特征数量n很大时，使用线性回归或逻辑回归进行拟合会让特征空间急剧膨胀，复杂度高且容易过拟合。   eg当输入是50*50像素的灰度图像时，$n&#x3D;50\times50&#x3D;2500$假设我们只考虑二次特征，那么二次特征($x_i\times x_j$)的数量为$\frac{n^2}{2}$,计算量大。   8.2 模型表示我们定义一个简单的逻辑单元">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2025/01/24/hello-world/index.html">
+<meta property="og:title" content="8.神经网络学习">
+<meta property="og:url" content="http://example.com/2025/02/16/8%20%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Dxuan&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="8 神经网络学习8.1 非线性假设当特征数量n很大时，使用线性回归或逻辑回归进行拟合会让特征空间急剧膨胀，复杂度高且容易过拟合。   eg当输入是50*50像素的灰度图像时，$n&#x3D;50\times50&#x3D;2500$假设我们只考虑二次特征，那么二次特征($x_i\times x_j$)的数量为$\frac{n^2}{2}$,计算量大。   8.2 模型表示我们定义一个简单的逻辑单元">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-24T04:44:13.658Z">
-<meta property="article:modified_time" content="2025-04-15T06:01:12.182Z">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225085717427.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225091144996.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225093823220.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225094829711.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225111757980.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225144138268.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225150431778.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225162516005.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225162639762.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225164429955.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225164546834.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225170428125.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225170758496.png">
+<meta property="article:published_time" content="2025-02-16T02:00:08.000Z">
+<meta property="article:modified_time" content="2025-04-15T07:33:12.243Z">
 <meta property="article:author" content="Dongxuan Liu">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225085717427.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Hello World - Dxuan&#39;s Blog</title>
+  <title>8.神经网络学习 - Dxuan&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="8.神经网络学习"></span>
           
         </div>
 
@@ -212,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-24 12:44" pubdate>
-          2025年1月24日 下午
+        <time datetime="2025-02-16 10:00" pubdate>
+          2025年2月16日 上午
         </time>
       </span>
     
@@ -225,7 +240,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          全文共有 18 字
+          全文共有 827 字
         
       </span>
     
@@ -237,7 +252,7 @@
         
         
           <!-- compatible with older versions-->
-          预计阅读时间为 1 分钟
+          预计阅读时间为 7 分钟
         
       </span>
     
@@ -283,25 +298,53 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">8.神经网络学习</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="8-神经网络学习"><a href="#8-神经网络学习" class="headerlink" title="8 神经网络学习"></a>8 神经网络学习</h1><h2 id="8-1-非线性假设"><a href="#8-1-非线性假设" class="headerlink" title="8.1 非线性假设"></a>8.1 非线性假设</h2><p>当特征数量n很大时，使用线性回归或逻辑回归进行拟合会让特征空间急剧膨胀，复杂度高且容易过拟合。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225085717427.png" alt="image-20241225085717427" style="zoom:50%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>eg当输入是50*50像素的灰度图像时，$n&#x3D;50\times50&#x3D;2500$假设我们只考虑二次特征，那么二次特征($x_i\times x_j$)的数量为$\frac{n^2}{2}$,计算量大。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225091144996.png" alt="image-20241225091144996" style="zoom:50%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<h2 id="8-2-模型表示"><a href="#8-2-模型表示" class="headerlink" title="8.2 模型表示"></a>8.2 模型表示</h2><p>我们定义一个简单的逻辑单元，其中$x_1, x_2, x_3$作为输入，$x_0$称为偏差（$x_0$恒为1），$h_\theta(x)&#x3D;\frac{1}{1+e^{-\theta^Tx}}$是输出，sigmoid$g(z)&#x3D;\frac{1}{1+e^{-z}}$是激活函数.$\theta$称为参数或权重。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225093823220.png" alt="image-20241225093823220" style="zoom:50%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<p>当有多个逻辑单元（神经元）连在一起的时候，形成神经网络。其中第一层称为输入层（input layer），最后一层称为输出层（output layer），其余层被称为隐藏层（hidden layer）</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225094829711.png" alt="image-20241225094829711" style="zoom:50%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>$a_i^{(j)}$表示第j层第i个神经元的输出，$\Theta^{(j)}$表示从第j层到第j+1层映射的权重矩阵。$\Theta_{ba}^{(j)}$其实就是表示从第j层的第a个单元到第j+1层第b个单元的权重</p>
+<p>若第j层有$s_j$个神经元，第j+1层有$s_{j+1}$个神经元，那么参数矩阵$\Theta^{(j)}$的维度是$s_{j+1}\times(s_j+1)$。其中+1是因为第j层有偏差神经元默认隐藏了。eg$\Theta^{(1)}\in \mathbb{R}^{3\times4}$</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225111757980.png" alt="image-20241225111757980" style="zoom:50%;" />
 
+<p>前向传播与向量实现：为了统一表示方法，我们将输入$x$表示为第1层的激活项$a^{(1)}&#x3D;[x_0;x_1;x_2;x_3]$。记$z^{(2)}&#x3D;\Theta^{(1)}a^{(1)}$, 第2层的激活项为$a^{(2)}&#x3D;g(z^{(2)})\in \mathbb{R}^3$, 我们添加$a^{(2)}<em>0$项，此时$a^{(2)}\in \mathbb{R}^4$. 重复以上过程，得到$z^{(3)}&#x3D;\Theta^{(2)}a^{(2)}, h</em>\Theta(x)&#x3D;a^{(3)}&#x3D;g(z^{(3)})$</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225144138268.png" alt="image-20241225144138268" style="zoom:50%;" />
+
+<p>若遮住第1层，我们发现模型剩余部分就是逻辑回归，只是输入不再是$x_1,x_2,x_3$，而是$a^{(2)}_1,a^{(2)}_2,a^{(2)}_3$.这是从输入值学习得到的特征项。即<strong>神经网络并没有用输入特征$x_1,x_2,x_3$来训练逻辑回归，而是自己训练逻辑回归的输入$a_1,a_2,a_3$(复杂特征项)</strong></p>
+<p>我们也可以使用多项式项作为输入如$x_1x_2,x_2x_3$等，神经网络会灵活的尝试快速学习任意的特征项。体现在参数$\Theta$上。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225150431778.png" alt="image-20241225150431778" style="zoom:50%;" />
+
+<h2 id="8-3-例子与直观理解"><a href="#8-3-例子与直观理解" class="headerlink" title="8.3 例子与直观理解"></a>8.3 例子与直观理解</h2><p>改变权重就能实现不同的逻辑</p>
+<p>与运算：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225162516005.png" alt="image-20241225162516005" style="zoom:50%;" />
+
+<p>或运算：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225162639762.png" alt="image-20241225162639762" style="zoom: 50%;" />
+
+<p>非运算：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225164429955.png" alt="image-20241225164429955" style="zoom:50%;" />
+
+<p>同或运算：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225164546834.png" alt="image-20241225164546834" style="zoom:50%;" />
+
+<p>通过不断用更深的层，可以计算更复杂的函数。每层都在上一层的基础上计算更复杂的方程。</p>
+<h2 id="8-4-多元分类"><a href="#8-4-多元分类" class="headerlink" title="8.4 多元分类"></a>8.4 多元分类</h2><p>当有4个类别需要进行分类时，我们让神经网络的输出层拥有4个神经元，即输出$h_\Theta(x)\in \mathbb{R}^4$是4维向量。第i个神经元的输出表示是否为第i类。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225170428125.png" alt="image-20241225170428125" style="zoom:50%;" />
+
+<p>我们训练集中一个样本表示为$(x^{(i)},y^{(i)})$, 其中$x^{(i)}$是一张图像，$y^{(i)}$是独热编码，我们要训练模型$h_\Theta(x^{(i)})$，让它尽可能的接近$y^{(i)}$。其中$h_\Theta(x^{(i)})$和$y^{(i)}$都是4维的向量。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241225170758496.png" alt="image-20241225170758496" style="zoom:50%;" />
                 
               </div>
             
@@ -309,6 +352,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">吴恩达机器学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="print-no-link">#机器学习</a>
+      
+    </div>
   
 </div>
 
@@ -318,8 +389,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2025/01/24/hello-world/</div>
+      <div>8.神经网络学习</div>
+      <div>http://example.com/2025/02/16/8 神经网络学习/</div>
     </div>
     <div class="license-meta">
       
@@ -331,7 +402,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月24日</div>
+          <div>2025年2月16日</div>
         </div>
       
       
@@ -358,6 +429,29 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/02/16/9%20%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/" title="9.神经网络学习">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">9.神经网络学习</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/16/6%20%E6%AD%A3%E5%88%99%E5%8C%96/" title="6.正则化">
+                        <span class="hidden-mobile">6.正则化</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 

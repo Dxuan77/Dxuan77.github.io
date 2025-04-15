@@ -1,0 +1,944 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Dongxuan Liu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="12 支持向量机12.1 优化目标我们通过回顾逻辑回归，一步步将其修改为SVM。在逻辑回归中，若一个样本对应的$y&#x3D;1$，我们就想让$h_\theta(x) \approx1$, 也就是让$\theta^Tx &gt;&gt;0$. 若一个样本对应的$y&#x3D;0$，我们就想让$h_\theta(x) \approx0$, 也就是让$\theta^Tx &lt;&lt;0$.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="12.支持向量机">
+<meta property="og:url" content="http://example.com/2025/02/16/12%20%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/index.html">
+<meta property="og:site_name" content="Dxuan&#39;s Blog">
+<meta property="og:description" content="12 支持向量机12.1 优化目标我们通过回顾逻辑回归，一步步将其修改为SVM。在逻辑回归中，若一个样本对应的$y&#x3D;1$，我们就想让$h_\theta(x) \approx1$, 也就是让$\theta^Tx &gt;&gt;0$. 若一个样本对应的$y&#x3D;0$，我们就想让$h_\theta(x) \approx0$, 也就是让$\theta^Tx &lt;&lt;0$.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210194748828.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210195532293.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210200613747.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210202015324.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210202130848.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210203952963.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210205526451.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210205139228.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210211208567.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210212402642.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210214418218.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210220023188.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210220235324.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210221533509.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211200201889.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211200114480.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211202225630.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211203327359.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211204243433.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211210053326.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211210936084.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211212700639.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211213210372.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211213536823.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211214003886.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211215619788.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211221609143.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211222445105.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216151224888.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216152537795.png">
+<meta property="article:published_time" content="2025-02-16T02:00:12.000Z">
+<meta property="article:modified_time" content="2025-04-15T07:33:38.744Z">
+<meta property="article:author" content="Dongxuan Liu">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210194748828.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>12.支持向量机 - Dxuan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Dxuan&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="12.支持向量机"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-02-16 10:00" pubdate>
+          2025年2月16日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          全文共有 3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          预计阅读时间为 26 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">12.支持向量机</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="12-支持向量机"><a href="#12-支持向量机" class="headerlink" title="12 支持向量机"></a>12 支持向量机</h1><h2 id="12-1-优化目标"><a href="#12-1-优化目标" class="headerlink" title="12.1 优化目标"></a>12.1 优化目标</h2><p>我们通过回顾逻辑回归，一步步将其修改为SVM。在逻辑回归中，若一个样本对应的$y&#x3D;1$，我们就想让$h_\theta(x) \approx1$, 也就是让$\theta^Tx &gt;&gt;0$. 若一个样本对应的$y&#x3D;0$，我们就想让$h_\theta(x) \approx0$, 也就是让$\theta^Tx &lt;&lt;0$. </p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210194748828.png" alt="image-20250210194748828" style="zoom:33%;" />
+
+<p>只考虑一个样本$(x,y)$时，代价函数如下所示：若$y&#x3D;1$，代价函数关于$z$的曲线如左图中蓝色曲线；若$y&#x3D;0$，代价函数关于$z$的曲线如右图中蓝色曲线。在SVM中，我们分别用粉色的线段作为新的代价函数。左边的函数称为$cost_1(z)$，右边函数称为 $cost_0(z)$。在之后的优化问题中，这种形式的 cost function 会为 SVM 带来计算上的优势。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210195532293.png" alt="image-20250210195532293" style="zoom:33%;" />
+
+<p>SVM的代价函数可以从逻辑回归的代价函数演变而来。主要有3个变化：1.使用之前定义的 $cost_1()$ 和 $cost_0()$ 替换公式中对应的项。2.去掉了$\frac{1}{m}$这个系数（因为对于最优化问题，乘除一个常数是不影响我们得出同样的$\theta$最优值）3.化为$C\times A+B$的形式。（对于逻辑回归，代价函数为$ A +\lambda\times B $，通过设置不同的$\lambda$ 来权衡$A$与$B$的重要性。 对于SVM， 我们删掉$\lambda$，引入常数$C$， 将代价函数改为$ C\times A + B$， 通过设置不同的$ C $达到优化目的。在优化过程中，其意义和逻辑回归是一样的。可以理解为$ C &#x3D; 1 &#x2F; \lambda$）</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210200613747.png" alt="image-20250210200613747" style="zoom:33%;" />
+
+<p>得到SVM的代价函数为：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210202015324.png" alt="image-20250210202015324" style="zoom:33%;" />
+
+<p>另外，逻辑回归中假设的输出是一个概率值。 而 SVM 直接预测$ y &#x3D; 1$，还是$ y &#x3D; 0$。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210202130848.png" alt="image-20250210202130848" style="zoom:33%;" />
+
+<h2 id="12-2-大间距分类的直观理解-Large-Margin-Intuition"><a href="#12-2-大间距分类的直观理解-Large-Margin-Intuition" class="headerlink" title="12.2 大间距分类的直观理解 Large Margin Intuition"></a>12.2 大间距分类的直观理解 Large Margin Intuition</h2><p>SVM又被称为大间距分类器</p>
+<p>在之前的定义中，只要$\theta^Tx \ge0$就被分为正类，只要$\theta^Tx &lt;0$就被分为负类. 但通过观察SVM的代价函数曲线，发现若$y&#x3D;1$，我们想要让$\theta^Tx \ge1$，这样才能让$cost_1(z)&#x3D;0$。同样，若$y&#x3D;0$，我们想要让$\theta^Tx \le-1$.</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210203952963.png" alt="image-20250210203952963" style="zoom:33%;" />
+
+<p>当超参数$C$很大时，代价函数就会尽量让第一项等于0. 也就是让：若$y^{(i)}&#x3D;1$，让$\theta^Tx^{(i)}\ge1$​；若$y^{(i)}&#x3D;0$，让$\theta^Tx^{(i)}\le-1$。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210205526451.png" alt="image-20250210205526451" style="zoom:33%;" />
+
+<p>这样SVM会把正负样本以最大的间距margin分开，因此SVM有着更好的鲁棒性。黑线即为SVM分类器。只有当 C 特别大的时候， SVM 才是一个最大间隔分类器。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210205139228.png" alt="image-20250210205139228" style="zoom:33%;" />
+
+<p>1.如果想将样本用最大间距分开，即将 C 设置的很大。那么仅因为一个异常点，决策边界会从黑线变成那条粉线，这实在是不明智的。2.如果 C 设置的小一点，最终得到这条黑线。它可以忽略一些异常点的影响，而且当数据线性不可分的时候，也可以将它们恰当分开，得到更好地决策边界。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210211208567.png" alt="image-20250210211208567" style="zoom:33%;" />
+
+<h2 id="12-3-大间距分类器背后的数学原理"><a href="#12-3-大间距分类器背后的数学原理" class="headerlink" title="12.3 大间距分类器背后的数学原理"></a>12.3 大间距分类器背后的数学原理</h2><p>向量的模长（范数）$||u||&#x3D;\sqrt{u_1^2+u_2^2}\in \mathbb{R}$. </p>
+<p>向量内积$u^Tv&#x3D;||u||\cdot||v||\cdot cos\theta&#x3D;||u||\cdot p\in \mathbb{R}$.（这里$p$是向量$v$在向量$u$上投影的长度，是一个数，$uv$同向为正，反向为负）.</p>
+<p>根据线代公式$u^Tv&#x3D;u_1v_1+u_2v_2&#x3D;v^Tu$</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210212402642.png" alt="image-20250210212402642" style="zoom:33%;" />
+
+<p>这节将解释为什么当 C 特别大的时候， SVM 会是一个最大间隔分类器？</p>
+<p>首先我们假设C很大，$\theta_0&#x3D;0,n&#x3D;2$(只有两个特征)。C很大时，我们的优化目标是$min \frac{1}{2}\sum_{j&#x3D;1}^{n}\theta_j^2&#x3D;\frac{1}{2}||\theta||^2$. 我们再来看$\theta^Tx^{(i)}&#x3D;p^{(i)}||\theta||&#x3D;\theta_1x_1^{(i)}+\theta_2x_2^{(i)}$.</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210214418218.png" alt="image-20250210214418218" style="zoom:33%;" />
+
+<p>根据上面的内积公式，得到：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210220023188.png" alt="image-20250210220023188" style="zoom:33%;" />
+
+<p>SVM如何选择更优的决策边界？</p>
+<p>假设我们得到了一条绿色的决策边界。因为$\theta$为边界函数的系数，所以以$\theta$为元素的向量和以$\theta$为系数的直线垂直.样本$x^{(1)}$在向量$\theta$上的投影为红色$p^{(1)}$, 样本$x^{(2)}$在向量$\theta$上的投影为粉色$p^{(2)}$.</p>
+<p>对于正样本$x^{(1)}$而言，想要$p^{(1)}||\theta||\ge1$，现在$p^{(1)}$长度非常短，就意味着$||\theta||$需要非常大。对于负样本$x^{(2)}$而言，想要$p^{(2)}||\theta||\le-1$，现在$p^{(2)}$长度非常短，就意味着$||\theta||$需要非常大。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210220235324.png" alt="image-20250210220235324" style="zoom:50%;" />
+
+<p>但我们的目标函数$min\frac{1}{2}\sum_{j&#x3D;1}^{n}\theta_j^2&#x3D;\frac{1}{2}||\theta||^2$是希望最小化参数$\theta$的范数，因此我们希望： 投影长度 $p^{(i)}$ 尽可能大。例如下面这条绿色的决策边界，就更好一些：</p>
+<p>可以发现此时$p^{(1)}$更大了，想要$p^{(1)}||\theta||\ge1$，$||\theta||$就可以变小了。达到了减低损失函数的目的。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250210221533509.png" alt="image-20250210221533509" style="zoom: 50%;" />
+
+<p>总结：<strong>SVM希望正负样本投影到$\theta$的值$p^{(i)}$足够大</strong>，实际上这些$p^{(i)}$值就等于间隔margin，<strong>也就是最大化了间隔</strong>，最终SVM找到了较小的$\theta$的范数，也就是为什么最终找到了大间隔分类器。</p>
+<h2 id="12-4-核函数1"><a href="#12-4-核函数1" class="headerlink" title="12.4 核函数1"></a>12.4 核函数1</h2><p>接下来我们改造SVM来完成非线性分类问题</p>
+<p>我们可以使用高阶多项式来解决非线性分类问题。可以用一系列新的特征 f 来替换模型中的每一项。例如可以令$f_1&#x3D;x_1,f_2&#x3D;x_2,f_3&#x3D;x_1x_2,f_4&#x3D;x_1^2$, 得到$h_\theta(x)&#x3D;\theta_0+\theta_1f_1+\theta_2f_2+…$。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211200201889.png" alt="image-20250211200201889" style="zoom:33%;" />
+
+<p>特征$f$的选取是多样的，有没有更好的方法来构造特征$f$呢？我们可以利用核函数来计算出新的特征。</p>
+<p>我们手动选取一些标记landmarks，分别为$l^{(1)},l^{(2)},l^{(3)}$. 给定一个训练实例$x$，我们用$x$与预先选定的标记 $l^{(1)} ， l^{(2)} ， l^{(3)}$ 的相似程度（核函数）作为新的特征$ f_1 ， f_2 ， f_3$，这里我们使用了高斯核函数。特征$ f_1 ， f_2 ， f_3$的表达式如下：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211200114480.png" alt="image-20250211200114480" style="zoom:33%;" />
+
+<p>因为$||x-l^{(1)}||^2&#x3D;\sum_{j&#x3D;1}^n(x_j-l_j^{(1)})^2$（忽略了$x_0&#x3D;0$）.如果训练实例$x$与$l^{(1)}$很近，则$f_1\approx1$；如果训练实例$x$与$l^{(1)}$很远，则$f_1\approx0$.</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211202225630.png" alt="image-20250211202225630" style="zoom:33%;" />
+
+<p>假设$x$含有两个特征$[x_1,x_2]$，不同的$\sigma$值会有不同效果。 图中水平面的坐标为 $x_1， x_2$ , 而垂直坐标轴代表 $f_1$。只有当 $x$ 与 $l^{(1)}$ 重合时， $f_1$ 才具有最大值。特征$f_1$衡量了$x$到标记$l^{(1)}$有多近。随着 $x$ 的改变 $f_1$ 值的变化速率受到 $\sigma^2$ 的控制。 $\sigma^2$越小，曲线越瘦.</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211203327359.png" alt="image-20250211203327359" style="zoom:33%;" />
+
+<p>假设我们已学到的参数$\theta&#x3D;[-0.5;1;1;0]$。下图中粉色的点离 $l^{(1)}$ 更近，所以 $f_1$ 接近 1，而 $f_2$ ，$f_3$ 接近 0。因此 $h_\theta(x) \ge 0$，因此预测 $y &#x3D; 1$；同理，绿色点离 $l^{(2)}$ 较近，也预测$y &#x3D; 1$；但浅蓝色点离 $l^{(1)}$, $l^{(2)}$ 都较远，预测$y &#x3D; 0$。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211204243433.png" alt="image-20250211204243433" style="zoom:33%;" />
+
+<p>距离 landmarks 近预测为1，距离远预测为0. 图中红色封闭曲线便是决策边界。在预测时我们采用的特征不是训练实例本身的特征，而是通过标记点和核函数计算出的新特征$f_1$ ， $f_2$ ， $f_3$ 。从而训练出了复杂的非线性决策边界.</p>
+<h2 id="12-5-核函数2"><a href="#12-5-核函数2" class="headerlink" title="12.5 核函数2"></a>12.5 核函数2</h2><p><strong>（1）怎么选取landmarks呢？</strong></p>
+<p>我们将每一个样本都作为一个landmark。即$l^{(i)}&#x3D;x^{(i)}$.</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211210053326.png" alt="image-20250211210053326" style="zoom:33%;" />
+
+<p>对于训练样本$(x^{(i)},y^{(i)})$，我们可以计算出特征向量$f^{(i)}&#x3D;[f_0^{(i)};f_1^{(i)};…;f_m^{(i)}]\in \mathbb{R}^{m+1}$. 最后，若$\theta^Tf^{(i)}\ge0$，预测为1.</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211210936084.png" alt="image-20250211210936084" style="zoom:33%;" />
+
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211212700639.png" alt="image-20250211212700639" style="zoom:33%;" />
+
+<p><strong>（2）将核函数kernel引入SVM</strong></p>
+<p>将高斯核函数代入SVM的代价函数中，如下图。这里与之前的代价函数的区别在于用核函数$f$代替了$x$。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211213210372.png" alt="image-20250211213210372" style="zoom:33%;" />
+
+<p><strong>（3）简化计算</strong></p>
+<p>为了简化计算， 在计算正则项 $\theta^T\theta$ 时，用 $\theta^TM\theta$ 代替 $\theta^T\theta$ ，其中 M 是一个矩阵，核函数不同则M不同。<br>（注：理论上也可以在逻辑回归中使用核函数，但使用 M 简化计算的方法不适用于逻辑回归，计算将非常耗时）</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211213536823.png" alt="image-20250211213536823" style="zoom:33%;" />
+
+<p><strong>（4）参数的选择</strong></p>
+<p>1.参数C：当 C 较大，相当于$\lambda$小，可能会导致过拟合，高方差 variance;<br>当 C 较小，相当于 $\lambda$ 大，可能会导致欠拟合，高偏差 bias;</p>
+<p>2.参数$\sigma^2$：当 $\sigma$ 较大时，图像扁平，可能会导致低方差，高偏差 bias;<br>当 $\sigma$ 较小时，图像窄尖，可能会导致低偏差，高方差 variance。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211214003886.png" alt="image-20250211214003886" style="zoom:33%;" />
+
+<h2 id="12-6-使用SVM"><a href="#12-6-使用SVM" class="headerlink" title="12.6 使用SVM"></a>12.6 使用SVM</h2><p><strong>（1）核函数选择</strong></p>
+<p>通常使用现有的软件包来最小化 SVM 代价函数。在使用SVM时我们要明确1.参数C 2.核函数的选择</p>
+<p>第一种核函数：No kernel（线性核函数linear kernel）。即不使用核函数。线性核函数 SVM 适用于函数简单，或特征n非常多而实例m非常少的情况，想要拟合一个线性决策边界的情况。$h_\theta(x)&#x3D;g(\theta_0+\theta_1x_1+…+\theta_nx_n)$, predict y&#x3D;1 if $\theta^Tx\ge0$.</p>
+<p>第二种核函数：高斯核函数。适应于特征数n很小，样本数m很大，想要拟合出复杂非线性决策边界的情况。$h_\theta(x)&#x3D;g(\theta_0+\theta_1f_1+…+\theta_nf_n)$, 另外还需要选择参数$\sigma^2$.</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211215619788.png" alt="image-20250211215619788" style="zoom:33%;" />
+
+<p><strong>（2）特征缩放</strong></p>
+<p>在使用高斯核函数之前要进行<strong>特征缩放</strong>。这样保障SVM可以关注所有不同的特征变量。而不是只被某一个数值特别大的特征影响。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211221609143.png" alt="image-20250211221609143" style="zoom:33%;" />
+
+<p><strong>（3）其他kernel</strong></p>
+<p>除高斯核函数、线性核函数之外，还有其他一些选择，如：<br>多项式核函数(Polynomial Kernel)， 字符串核函数(String kernel)， 卡方核函数( chi-square kernel) ，直方图交集核函数(histogram intersection kernel) 等。<br>它们的目标也都是根据训练集和标识之间的距离来构建新特征。但其他核函数都使用很少。</p>
+<p>一个核函数需要满足 Mercer’s 定理，才能被 SVM 的优化软件正确处理。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250211222445105.png" alt="image-20250211222445105" style="zoom: 33%;" />
+
+<p><strong>（4）多分类问题</strong></p>
+<p>假设我们要分为K个类别，可以使用一对多的方法来解决多分类问题，训练K个SVM：对于第i个SVM，将$y&#x3D;i$作为正类，其余作为负类。这样可以得到K组参数$\theta$，选择具有最大$(\theta^{(i)})^Tx$的类别$i$，作为预测结果。</p>
+<p>但是大多数支持向量机软件包都有内置的多类分类功能，我们只要直接使用即可。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216151224888.png" alt="image-20250216151224888" style="zoom:33%;" />
+
+<p><strong>（5）逻辑回归模型 和 SVM 的选择</strong></p>
+<p>可以根据以下准则进行模型的选择：$n$为特征数，$m$为训练样本数。<br>(a)如果$n&gt;&gt;m$，例如 $n$ 为10000，而 $m$ 在10-1000之间，即训练集数据量不够支持我们训练一个复杂的非线性模型，选用逻辑回归模型或者不带核函数的 SVM。<br>(b)如果 $n$ 较小，$m$ 中等，例如 $n$ 在 1-1000 之间，而 $m$ 在 10-10000 之间，使用高斯核函数的 SVM。<br>(c) 如果 $n$ 较小，$m$ 较大，例如 $n$ 在 1-1000 之间，而 $m$ 大于 50000，则使用 SVM 会非常慢。解决方案是创造、增加更多的特征，然后使用逻辑回归或不带核函数的 SVM。(如果训练集非常大，高斯核函数的 SVM 会非常慢。)</p>
+<p>（注： 逻辑回归和不带核函数的SVM 非常相似。但是根据实际情况，其中一个可能会更有效。随着 SVM 的复杂度增加、特征数量相当大时，不带核函数的SVM 就会表现得相当突出。）</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216152537795.png" alt="image-20250216152537795" style="zoom:33%;" />
+
+<p>神经网络在大多数情况下都是有效的，但通常训练较慢。一个非常好的 SVM 实现包可能会运行得比较快比神经网络快很多，而且它的代价函数是凸函数，不存在局部最优解。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">吴恩达机器学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="print-no-link">#机器学习</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>12.支持向量机</div>
+      <div>http://example.com/2025/02/16/12 支持向量机/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Dongxuan Liu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年2月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/02/16/13%20%E8%81%9A%E7%B1%BB/" title="13.聚类">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">13.聚类</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/16/11%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" title="11.机器学习系统设计">
+                        <span class="hidden-mobile">11.机器学习系统设计</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments">
+      
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://registry.npmmirror.com/@waline/client/2.15.8/files/dist/waline.css')
+      Fluid.utils.createScript('https://registry.npmmirror.com/@waline/client/2.15.8/files/dist/waline.js', function() {
+        var options = Object.assign(
+          {"serverURL":"https://waline.xuanspace.top/","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  <div>
+    <span id="timeDate">正在载入天数...</span>
+    <span id="times">载入时分秒...</span>
+    <script>
+    var now = new Date();
+    function createtime(){
+        var grt= new Date("01/24/2025 12:44:13");
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if(String(mnum).length ==1 ){
+                  mnum = "0" + mnum;
+        }
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if(String(snum).length ==1 ){
+                  snum = "0" + snum;
+        }
+        document.getElementById("timeDate").innerHTML = "🚀已持续航行&nbsp"+dnum+"&nbsp天";  
+        document.getElementById("times").innerHTML = hnum + "&nbsp时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+    }
+    setInterval("createtime()",250);
+    </script>
+  </div>
+
+  
+    <div class="footer-content">
+       Powered by  <a href="https://www.aliyun.com/" target="_blank" rel="nofollow noopener"><span>阿里云</span></a> | <a href="https://hexo.io/" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> &  <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

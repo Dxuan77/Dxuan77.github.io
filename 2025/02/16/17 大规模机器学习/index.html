@@ -19,23 +19,43 @@
   <meta name="author" content="Dongxuan Liu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="17 大规模机器学习17.1 大型数据集的学习如果有一个低方差的模型， 通常通过增加数据集的规模，可以获得更好的结果。   但是如果数据集特别大，则首先应该检查这么大规模是否真的必要，也许只用 1000个训练集也能获得较好的效果，可以绘制学习曲线来帮助判断。判断是高偏差还是高方差，高偏差时增加数据集是没有用的，这时考虑设计更多特征；高方差时，增加数据集通常能让算法表现更好。   17.2 随机梯度">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2025/01/24/hello-world/index.html">
+<meta property="og:title" content="17.大规模机器学习">
+<meta property="og:url" content="http://example.com/2025/02/16/17%20%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Dxuan&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="17 大规模机器学习17.1 大型数据集的学习如果有一个低方差的模型， 通常通过增加数据集的规模，可以获得更好的结果。   但是如果数据集特别大，则首先应该检查这么大规模是否真的必要，也许只用 1000个训练集也能获得较好的效果，可以绘制学习曲线来帮助判断。判断是高偏差还是高方差，高偏差时增加数据集是没有用的，这时考虑设计更多特征；高方差时，增加数据集通常能让算法表现更好。   17.2 随机梯度">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-24T04:44:13.658Z">
-<meta property="article:modified_time" content="2025-04-15T06:01:12.182Z">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219200544140.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219201037808.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219201516874.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219201757150.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219202353537.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219202815649.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219203802057.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219204118115.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219205059495.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219205613808.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219211302129.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219213453785.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219212604841.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219213241968.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219214858928.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219215047820.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219215358322.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219215758162.png">
+<meta property="article:published_time" content="2025-02-16T02:00:17.000Z">
+<meta property="article:modified_time" content="2025-04-15T07:34:12.034Z">
 <meta property="article:author" content="Dongxuan Liu">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219200544140.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Hello World - Dxuan&#39;s Blog</title>
+  <title>17.大规模机器学习 - Dxuan&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +221,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="17.大规模机器学习"></span>
           
         </div>
 
@@ -212,8 +232,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-24 12:44" pubdate>
-          2025年1月24日 下午
+        <time datetime="2025-02-16 10:00" pubdate>
+          2025年2月16日 上午
         </time>
       </span>
     
@@ -225,7 +245,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          全文共有 18 字
+          全文共有 1.4k 字
         
       </span>
     
@@ -237,7 +257,7 @@
         
         
           <!-- compatible with older versions-->
-          预计阅读时间为 1 分钟
+          预计阅读时间为 13 分钟
         
       </span>
     
@@ -283,25 +303,67 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">17.大规模机器学习</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="17-大规模机器学习"><a href="#17-大规模机器学习" class="headerlink" title="17 大规模机器学习"></a>17 大规模机器学习</h1><h2 id="17-1-大型数据集的学习"><a href="#17-1-大型数据集的学习" class="headerlink" title="17.1 大型数据集的学习"></a>17.1 大型数据集的学习</h2><p>如果有一个低方差的模型， 通常通过增加数据集的规模，可以获得更好的结果。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219200544140.png" alt="image-20250219200544140" style="zoom:33%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>但是如果数据集特别大，则首先应该检查这么大规模是否真的必要，也许只用 1000个训练集也能获得较好的效果，可以绘制学习曲线来帮助判断。判断是高偏差还是高方差，高偏差时增加数据集是没有用的，这时考虑设计更多特征；高方差时，增加数据集通常能让算法表现更好。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219201037808.png" alt="image-20250219201037808" style="zoom:33%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<h2 id="17-2-随机梯度下降法-Stochastic-Gradient-Descent"><a href="#17-2-随机梯度下降法-Stochastic-Gradient-Descent" class="headerlink" title="17.2 随机梯度下降法 Stochastic Gradient Descent"></a>17.2 随机梯度下降法 Stochastic Gradient Descent</h2><img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219201516874.png" alt="image-20250219201516874" style="zoom:33%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<p>batch gradient desent 每次迭代需要使用全量训练集，直到算法收敛</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219201757150.png" alt="image-20250219201757150" style="zoom:33%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>如果必须使用一个大规模的训练集，则可以尝试使用随机梯度下降法(SGD)来代替批量梯度下降法(batch gradient desent)。</p>
+<p>批量梯度下降法每次迭代需要使用全量训练集，直到算法收敛。随机梯度下降算法 则首先对训练集随机“打乱”，然后在每一次计算(只计算一个样本)之后便更新参数$\theta$</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219202353537.png" alt="image-20250219202353537" style="zoom:33%;" />
 
+<p>在批量梯度下降算法还没有完成一次迭代时，随机梯度下降算法便已经走出了很远。但 SGD 不是每一步都是朝着”正确”的方向迈出的。因此虽然会逐渐走向全局最小值的位置，但可能无法到达最小值点，而是在附近徘徊。不过很多时候这已经足够了。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219202815649.png" alt="image-20250219202815649" style="zoom:33%;" />
+
+<h2 id="17-3-小批量梯度下降-Mini-Batch-Gradient-Descent"><a href="#17-3-小批量梯度下降-Mini-Batch-Gradient-Descent" class="headerlink" title="17.3 小批量梯度下降 Mini-Batch Gradient Descent"></a>17.3 小批量梯度下降 Mini-Batch Gradient Descent</h2><p>小批量梯度下降算法，介于批量梯度下降算法和随机梯度下降算法之间，每计算b个训练样本，更新一次参数 $\theta$ 。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219203802057.png" alt="image-20250219203802057" style="zoom:33%;" />
+
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219204118115.png" alt="image-20250219204118115" style="zoom:33%;" />
+
+<p>通常会令 b 在 2-100 之间。小批量梯度下降的好处在于可以用向量化的方式来循环b个训练实例，如果用的线性代数函数库能支持并行处理，那算法的总体表现将与随机梯度下降更快。</p>
+<h2 id="17-4-随机梯度下降算法的收敛"><a href="#17-4-随机梯度下降算法的收敛" class="headerlink" title="17.4 随机梯度下降算法的收敛"></a>17.4 随机梯度下降算法的收敛</h2><p>在批量梯度下降中，可以令代价函数 J 为迭代次数的函数，绘制图表判断梯度下降是否收敛。但是，在大规模的训练集下不现实，因为计算代价太大。</p>
+<p>当数据集很大时使用随机梯度下降算法，这时为了检查随机梯度下降的收敛性，我们在每1000次迭代运算后，对最后1000个样本的cost值求一次平均，将这个平均值画到图中。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219205059495.png" alt="image-20250219205059495" style="zoom:33%;" />
+
+<p>下面是可能得到的几种图像：</p>
+<p>图1：红色线的学习率比蓝色线要小，因此收敛的慢，最后收敛的更好一些。<br>图2：红线通过对5000次迭代求平均，而不是1000个，得到更加平滑的曲线。<br>图3：蓝线颠簸不平而且没有明显减少。可以增大$\alpha$来使得函数更加平缓，也许能使其像红线一样下降;或者可能仍像粉线一样颠簸不平且不下降，说明模型本身可能存在一些错误。<br>图4：如果曲线正在上升，说明算法发散。应该把学习速率$\alpha$的值减小。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219205613808.png" alt="image-20250219205613808" style="zoom:33%;" />
+
+<p>还可以令学习率随着迭代次数的增加而减小，例如令:$\alpha&#x3D;\frac{const1}{iterationNumber+const2}$, 这样，随着不断地靠近全局最小值，学习率会越来越小，迫使算法收敛而非在最小值附近徘徊。</p>
+<p>但是通常不需要这样做便能有非常好的效果，对参数$const1, const2$进行调整比较麻烦。 </p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219211302129.png" alt="image-20250219211302129" style="zoom: 67%;" />
+
+<h2 id="17-5-在线学习"><a href="#17-5-在线学习" class="headerlink" title="17.5 在线学习"></a>17.5 在线学习</h2><p>有一种大规模的机器学习机制，叫做在线学习机制。让我们可以模型化问题。它指的是针对数据流，而非针对离线静态数据集进行学习。例如，许多在线网站都有持续不断的用户流，对于每一个用户，网站希望能不将数据存储到数据库中，便顺利地进行算法学习。</p>
+<p>在线学习的算法与随机梯度下降算法有些类似，只对单一的实例进行学习，而非对一个提前定义的训练集进行循环：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219213453785.png" alt="image-20250219213453785" style="zoom:67%;" />
+
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219212604841.png" alt="image-20250219212604841" style="zoom:33%;" />
+
+<p>一旦对一个数据的学习完成，便可以丢弃它，不需要再存储。这样的好处在于可以针对用户当前行为，不断更新模型以适应该用户。慢慢地调试学习到的假设，将其调节更新到最新的用户行为。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219213241968.png" alt="image-20250219213241968" style="zoom:33%;" />
+
+<h2 id="17-6-映射化简和数据并行"><a href="#17-6-映射化简和数据并行" class="headerlink" title="17.6 映射化简和数据并行"></a>17.6 映射化简和数据并行</h2><p>映射化简和数据并行对于大规模机器学习问题而言非常重要。之前提到，批量梯度下降算法计算代价非常大。如果能将数据集分配给多台计算机，让每一台计算机处理数据集的一个子集，然后将结果汇总求和，这样的方法叫做映射简化。</p>
+<p>例如有 400 个训练实例，可以将批量梯度下降的求和任务分配给 4 台计算机进行处理:</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219214858928.png" alt="image-20250219214858928" style="zoom:33%;" />
+
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219215047820.png" alt="image-20250219215047820" style="zoom:33%;" />
+
+<p>如果任何学习算法能够表达为对训练集函数的求和，那么便能将这个任务分配给多台计算机(或者同一台计算机的不同 CPU 核心)，以达到加速处理的目的。例如逻辑回归：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219215358322.png" alt="image-20250219215358322" style="zoom:33%;" />
+
+<p>很多高级的线性代数函数库能够利用多核 CPU 来并行地处理矩阵运算，这也是算法的向量化实现如此重要的缘故(比调用循环快)。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250219215758162.png" alt="image-20250219215758162" style="zoom:33%;" />
                 
               </div>
             
@@ -309,6 +371,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">吴恩达机器学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="print-no-link">#机器学习</a>
+      
+    </div>
   
 </div>
 
@@ -318,8 +408,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2025/01/24/hello-world/</div>
+      <div>17.大规模机器学习</div>
+      <div>http://example.com/2025/02/16/17 大规模机器学习/</div>
     </div>
     <div class="license-meta">
       
@@ -331,7 +421,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月24日</div>
+          <div>2025年2月16日</div>
         </div>
       
       
@@ -358,6 +448,29 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/02/16/18%20Photo%20OCR%20%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%E5%9B%BE%E7%89%87%E6%96%87%E5%AD%97%E8%AF%86%E5%88%AB/" title="18.Photo OCR 应用实例:图片文字识别">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">18.Photo OCR 应用实例:图片文字识别</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/16/16%20%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/" title="16.推荐系统">
+                        <span class="hidden-mobile">16.推荐系统</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 

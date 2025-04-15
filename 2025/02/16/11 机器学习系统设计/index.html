@@ -19,23 +19,37 @@
   <meta name="author" content="Dongxuan Liu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="百度：baidu.com谷歌：google.com">
+    <meta name="description" content="11 机器学习系统设计11.1 确定执行的优先级本章使用垃圾邮件分类器的例子，来描述机器学习系统设计方法。 设计垃圾邮件分类器时，首先要确定特征向量$x$和$y$，这里我们选取100个单词组成我们的特征向量，当单词在邮件中出现，我们就将特征向量$x$对应位置出标为1.   接下来我们要考虑的就是如何提高分类器的准确率呢？ 通常有很多方法：1.收集更多垃圾邮件和非垃圾邮件样本 2.基于邮件的路由信息">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test my site">
-<meta property="og:url" content="http://example.com/2025/01/24/test-my-site/index.html">
+<meta property="og:title" content="11.机器学习系统设计">
+<meta property="og:url" content="http://example.com/2025/02/16/11%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/index.html">
 <meta property="og:site_name" content="Dxuan&#39;s Blog">
-<meta property="og:description" content="百度：baidu.com谷歌：google.com">
+<meta property="og:description" content="11 机器学习系统设计11.1 确定执行的优先级本章使用垃圾邮件分类器的例子，来描述机器学习系统设计方法。 设计垃圾邮件分类器时，首先要确定特征向量$x$和$y$，这里我们选取100个单词组成我们的特征向量，当单词在邮件中出现，我们就将特征向量$x$对应位置出标为1.   接下来我们要考虑的就是如何提高分类器的准确率呢？ 通常有很多方法：1.收集更多垃圾邮件和非垃圾邮件样本 2.基于邮件的路由信息">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-24T07:09:42.000Z">
-<meta property="article:modified_time" content="2025-01-25T05:19:08.305Z">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250208200801676.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250208201329654.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250208202429552.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250208203447966.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250208205152035.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250208212553201.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250208214504393.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250209195928045.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250209201920414.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250209205401138.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250209210245426.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250209204628658.png">
+<meta property="article:published_time" content="2025-02-16T02:00:11.000Z">
+<meta property="article:modified_time" content="2025-04-15T07:33:31.995Z">
 <meta property="article:author" content="Dongxuan Liu">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250208200801676.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>test my site - Dxuan&#39;s Blog</title>
+  <title>11.机器学习系统设计 - Dxuan&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +215,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="test my site"></span>
+            <span id="subtitle" data-typed-text="11.机器学习系统设计"></span>
           
         </div>
 
@@ -212,8 +226,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-24 15:09" pubdate>
-          2025年1月24日 下午
+        <time datetime="2025-02-16 10:00" pubdate>
+          2025年2月16日 上午
         </time>
       </span>
     
@@ -225,7 +239,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          全文共有 8 字
+          全文共有 1.6k 字
         
       </span>
     
@@ -237,7 +251,7 @@
         
         
           <!-- compatible with older versions-->
-          预计阅读时间为 1 分钟
+          预计阅读时间为 14 分钟
         
       </span>
     
@@ -283,12 +297,63 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">test my site</h1>
+            <h1 id="seo-header">11.机器学习系统设计</h1>
             
             
               <div class="markdown-body">
                 
-                <p>百度：baidu.com<br>谷歌：google.com</p>
+                <h1 id="11-机器学习系统设计"><a href="#11-机器学习系统设计" class="headerlink" title="11 机器学习系统设计"></a>11 机器学习系统设计</h1><h2 id="11-1-确定执行的优先级"><a href="#11-1-确定执行的优先级" class="headerlink" title="11.1 确定执行的优先级"></a>11.1 确定执行的优先级</h2><p>本章使用垃圾邮件分类器的例子，来描述机器学习系统设计方法。</p>
+<p>设计垃圾邮件分类器时，首先要确定特征向量$x$和$y$，这里我们选取100个单词组成我们的特征向量，当单词在邮件中出现，我们就将特征向量$x$对应位置出标为1.</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250208200801676.png" alt="image-20250208200801676" style="zoom:33%;" />
+
+<p>接下来我们要考虑的就是如何提高分类器的准确率呢？</p>
+<p>通常有很多方法：1.收集更多垃圾邮件和非垃圾邮件样本 2.基于邮件的路由信息设计更复杂的特征（考虑发件人信息、邮件标题）3.基于邮件正文信息设计更复杂的特征 4. 为探测刻意的拼写错误(把 watch 写成 w4tch)开发复杂的算法</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250208201329654.png" alt="image-20250208201329654" style="zoom:33%;" />
+
+<p>哪个才是最有效的呢？</p>
+<h2 id="11-2-误差分析"><a href="#11-2-误差分析" class="headerlink" title="11.2 误差分析"></a>11.2 误差分析</h2><p>当设计一个机器学习系统时，1.通常先简单快速的实现算法，并在验证集上进行测试，2. 画出<strong>学习曲线</strong>，分析是否存在高偏差&#x2F;高方差问题，决定是否需要更多数据，还是更多特征。3. <strong>误差分析</strong>：人为检查分析验证集上出错的数据，看它们有哪些特征，算法有哪些优缺点。</p>
+<p>2和3可以为我们的后续优化做指导</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250208202429552.png" alt="image-20250208202429552" style="zoom:33%;" />
+
+<p>通过以下方式分析统计验证集上犯错的样本：1. 邮件的类型 2. 没有被正确分类的原因。</p>
+<p>通过数字体现出问题的大头，然后着重去解决问题的大头。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250208203447966.png" alt="image-20250208203447966" style="zoom:33%;" />
+
+<p>通常使用<strong>数值评价指标</strong>来判断一个方法是否对算法优化有效。比如：不使用单词主干提取在验证集的错误率是5%，使用单词主干提取在验证集的错误率是3%. 有效则采用。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250208205152035.png" alt="image-20250208205152035" style="zoom:33%;" />
+
+<p>总计：先简单粗暴实现算法，然后通<strong>过误差分析，分析出现了哪些失误，以此决定之后的优化方法。使用数值评价指标来试验新的想法，来确定这些想法哪些有用&#x2F;无用。</strong></p>
+<h2 id="11-3-类偏斜的误差度量-Error-Metrics-for-Skewed-Classes"><a href="#11-3-类偏斜的误差度量-Error-Metrics-for-Skewed-Classes" class="headerlink" title="11.3 类偏斜的误差度量 Error Metrics for Skewed Classes"></a>11.3 类偏斜的误差度量 Error Metrics for Skewed Classes</h2><p>偏斜类：正负类别样本数量差距非常大。事实上只有0.5%得人得癌症，是否得癌症就是一个偏斜类。假设在癌症检测算法中，我们的算法错误率为1%，那么我们得算法还不如全输出$y&#x3D;0$的算法（错误率0.5%）</p>
+<p>**在偏斜类问题上使用分类错误率或分类准确度不能恰当的评价算法的好坏。**对于偏斜数据集，如果单纯考虑准确率accuracy，会导致有时候模型预测的结果，还不如全部判断为1或者全部判断0 的结果好。 所以需要引入另外一些辅助度量指标。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250208212553201.png" alt="image-20250208212553201" style="zoom:33%;" />
+
+<p>这里我们让$y&#x3D;1$表示数量少的类别（得癌症）</p>
+<p>查准率：在我们算法预测得癌症的人中，有多大比率的病人是真正患有癌症的。$precision&#x3D;\frac{正确预测患有癌症人数}{预测阳性}&#x3D;\frac{真阳性}{真阳性+假阳性}$</p>
+<p>查全率（召回率）：数据集中确实得癌症的病人，有多少我们正确预测他们得了癌症。$recall&#x3D;\frac{正确预测患有癌症人数}{实际阳性}&#x3D;\frac{真阳性}{真阳性+假阴性}$</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250208214504393.png" alt="image-20250208214504393" style="zoom:33%;" />
+
+<p><strong>查准率和查全率都是越高越好。在偏斜类问题中，使用查准率和召回率比使用准确率要好得多。</strong></p>
+<h2 id="11-4-查准率Precision-和-查全率Recall-之间的权衡"><a href="#11-4-查准率Precision-和-查全率Recall-之间的权衡" class="headerlink" title="11.4 查准率Precision 和 查全率Recall 之间的权衡"></a>11.4 查准率Precision 和 查全率Recall 之间的权衡</h2><p>假设我们使用逻辑回归来预测癌症，输出$h_\theta(x)$介于[0, 1]之间。我们先设阈值&#x3D;0.5，若$h_\theta(x) \ge 0.5$，预测为正例，得癌症。若我们把阈值修改为0.7，那么我们预测得癌症的人有更大的可能性确实得癌症，判断的准、但有更多正例被漏掉，即有更高的查准率，但有更低的查全率。相反，若我们把阈值修改为0.3，那么我们找的全，但有更多负例被错判为正例，即有更高的查全率，但有更低的查准率。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250209195928045.png" alt="image-20250209195928045" style="zoom:33%;" />
+
+<p>那么我们如何权衡查准率和查全率，当不同算法或者不同阈值，有着不同的查准率和查全率，我们该怎么判断哪个算法更好呢？</p>
+<p>一个结合了查准率和查全率的数值评价指标是F1分数。$F_1 score&#x3D;2\frac{PR}{P+R}$，只要P或R有一个低，F1分数就会很低。F1分数越高，算法表现越好。</p>
+<p>如何自动选取阈值？可以使用不同的阈值在验证集上计算F1分数，分数最高的算法表现好。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250209201920414.png" alt="image-20250209201920414" style="zoom:33%;" />
+
+<h2 id="11-5-数据集的大小"><a href="#11-5-数据集的大小" class="headerlink" title="11.5 数据集的大小"></a>11.5 数据集的大小</h2><p>对于机器学习，通常可以选择很多不同的算法进行预测，随着训练集规模增大，准确率一般会提高：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250209205401138.png" alt="image-20250209205401138" style="zoom:33%;" />
+
+<p>但事实上，单纯增大数据集并不能解决一切问题。 如果数据集中含的信息很少（比如想对房价进行预测，但是只有面积数据。这时候即使增加数据、或者对模型在面积这个feature上进行多项式处理，也起不到好的效果）</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250209210245426.png" alt="image-20250209210245426" style="zoom:33%;" />
+
+<p>当我们的算法使用的特征值有足够的信息，即参数多，这将会是一个低偏差的算法。这时$J_{train}(\theta)$会很小；</p>
+<p>当我们使用一个非常大的数据集时（不太可能过拟合），这将会是一个低方差的算法。这时$J_{train}(\theta) \approx J_{test}(\theta)$.</p>
+<p>若我们结合两者，就能得到一个$J_{test}(\theta)$会很小的优秀算法。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250209204628658.png" alt="image-20250209204628658" style="zoom:33%;" />
+
+<p><strong>总结：如果我们能做到1.人类专家能够根据特征值$x$预测出来$y$（即，特征值有足够的信息）, 2.有一个庞大数据集。那么我们就能训练出性能好的学习算法。</strong></p>
+<p><strong>如果模型欠拟合（偏差bias大），那么就要增加特征（对神经网络增加hidden units）；如果模型过拟合（方差variance大），那么就要增大数据集，使得$J_{cv} \approx J_{train}$，从而降低过拟合。</strong></p>
 
                 
               </div>
@@ -297,6 +362,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">吴恩达机器学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="print-no-link">#机器学习</a>
+      
+    </div>
   
 </div>
 
@@ -306,8 +399,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>test my site</div>
-      <div>http://example.com/2025/01/24/test-my-site/</div>
+      <div>11.机器学习系统设计</div>
+      <div>http://example.com/2025/02/16/11 机器学习系统设计/</div>
     </div>
     <div class="license-meta">
       
@@ -319,7 +412,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月24日</div>
+          <div>2025年2月16日</div>
         </div>
       
       
@@ -346,6 +439,29 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/02/16/12%20%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/" title="12.支持向量机">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">12.支持向量机</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/16/10%20%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BB%BA%E8%AE%AE/" title="10.应用机器学习的建议">
+                        <span class="hidden-mobile">10.应用机器学习的建议</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 
@@ -428,6 +544,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -674,6 +796,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

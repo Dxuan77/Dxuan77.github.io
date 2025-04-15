@@ -19,23 +19,38 @@
   <meta name="author" content="Dongxuan Liu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="4 多元线性回归多特征设有n个特征，$x^{(i)}$表示第i个样本的特征向量，形状为$n\times 1$。$x^{(i)}_j$表示第i个样本的第j个特征的值。 特征有多个时，我们可以假设$h_{\theta}(x)&#x3D;\theta_0+\theta_1x_1+\theta_2x_2+…+\theta_nx_n$,可以让$x_0&#x3D;1$，这样$h_\theta(x)&#x3D;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2025/01/24/hello-world/index.html">
+<meta property="og:title" content="4.多元线性回归">
+<meta property="og:url" content="http://example.com/2025/02/16/4%20%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/index.html">
 <meta property="og:site_name" content="Dxuan&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="4 多元线性回归多特征设有n个特征，$x^{(i)}$表示第i个样本的特征向量，形状为$n\times 1$。$x^{(i)}_j$表示第i个样本的第j个特征的值。 特征有多个时，我们可以假设$h_{\theta}(x)&#x3D;\theta_0+\theta_1x_1+\theta_2x_2+…+\theta_nx_n$,可以让$x_0&#x3D;1$，这样$h_\theta(x)&#x3D;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-24T04:44:13.658Z">
-<meta property="article:modified_time" content="2025-04-15T06:01:12.182Z">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241214161929934.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241214162959309.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241214164557345.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241216163630788.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241216164203898.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241216164544635.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241216170757054.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241216191324398.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241216191436816.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241216191836703.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241216200344136.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241219165803645.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241219165707439.png">
+<meta property="article:published_time" content="2025-02-16T02:00:04.000Z">
+<meta property="article:modified_time" content="2025-04-15T07:32:46.875Z">
 <meta property="article:author" content="Dongxuan Liu">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241214161929934.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Hello World - Dxuan&#39;s Blog</title>
+  <title>4.多元线性回归 - Dxuan&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="4.多元线性回归"></span>
           
         </div>
 
@@ -212,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-24 12:44" pubdate>
-          2025年1月24日 下午
+        <time datetime="2025-02-16 10:00" pubdate>
+          2025年2月16日 上午
         </time>
       </span>
     
@@ -225,7 +240,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          全文共有 18 字
+          全文共有 1.3k 字
         
       </span>
     
@@ -237,7 +252,7 @@
         
         
           <!-- compatible with older versions-->
-          预计阅读时间为 1 分钟
+          预计阅读时间为 12 分钟
         
       </span>
     
@@ -283,25 +298,68 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">4.多元线性回归</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="4-多元线性回归"><a href="#4-多元线性回归" class="headerlink" title="4 多元线性回归"></a>4 多元线性回归</h1><h2 id="多特征"><a href="#多特征" class="headerlink" title="多特征"></a>多特征</h2><p>设有n个特征，$x^{(i)}$表示第i个样本的特征向量，形状为$n\times 1$。$x^{(i)}_j$表示第i个样本的第j个特征的值。</p>
+<p>特征有多个时，我们可以假设$h_{\theta}(x)&#x3D;\theta_0+\theta_1x_1+\theta_2x_2+…+\theta_nx_n$,可以让$x_0&#x3D;1$，这样$h_\theta(x)&#x3D;\theta^{T}x$</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241214161929934.png" alt="image-20241214161929934" style="zoom:50%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>梯度下降更新参数，左图为只有1个特征，右图为有多个特征时：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241214162959309.png" alt="image-20241214162959309" style="zoom:50%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<p>如何让梯度下降收敛更快：（1）特征缩放Feature Scaling（2）学习率</p>
+<h2 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h2><p>当特征值的<strong>取值范围</strong>差距很大时，会相应的导致梯度差距很大，参数更新可能左右横跳，导致收敛速度变慢，如左图；</p>
+<p>我们可以让变量除以极差（max-min）来进行特征缩放，让变量取值范围相近，缓解这一问题</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241214164557345.png" alt="image-20241214164557345" style="zoom:50%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<p>左右横跳是因为θ1的偏导相对θ2太大，相对的θ1下降步数太大，从山谷这头一下子迈到山谷那头，永远没头。</p>
+<p><strong>均值归一化（Mean Normalization）</strong>：将数据的每个特征调整为均值为 0，范围标准化为固定区间（通常是 [-1, 1]）</p>
+<p>$x_{norm}&#x3D;\frac{x-u}{x_{max}-x_{min}}$，其中$u$为均值</p>
+<p><strong>标准化（Standardization）</strong>：调整为均值为 0，标准差为 1，适合于分布接近正态分布的数据</p>
+<p>$x_{stand}&#x3D;\frac{x-u}{\sigma}$, 其中$\sigma$为标准差</p>
+<h2 id="学习率"><a href="#学习率" class="headerlink" title="学习率"></a>学习率</h2><p>如何确保梯度下降正常工作？（1）绘制损失函数随迭代次数的<strong>曲线图</strong>。损失函数逐步下降说明正常工作；当损失函数较为平坦时，说明已经收敛（2）自动收敛测试，当某次迭代后，学习率下降很少$&lt;\epsilon$说明已经收敛, 但$\epsilon$取值较难设定。常用方法一</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241216163630788.png" alt="image-20241216163630788" style="zoom:50%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>当损失函数曲线逐步上升或成屁股形时，说明学习率取值过大，应调小学习率</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241216164203898.png" alt="image-20241216164203898" style="zoom:50%;" />
 
+<p><strong>当学习率充分小时，损失函数的值会逐步下降。但梯度下降算法会收敛的很慢。</strong></p>
+<p>总结：学习率太小会收敛很慢；学习率太大，损失会增加；可能不收敛；可能收敛很慢。</p>
+<p>如何选择学习率：先确定学习率的最小最大值，再在区间内尝试找到可以快速收敛的学习率。可以每3倍3倍的尝试。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241216164544635.png" alt="image-20241216164544635" style="zoom:50%;" />
+
+<h2 id="特征和多项式回归"><a href="#特征和多项式回归" class="headerlink" title="特征和多项式回归"></a>特征和多项式回归</h2><p>设计特征：我们可以不使用$h_{\theta}(x)&#x3D;\theta_0+\theta_1\times x_1+\theta_2\times x_2$，其中$x_1$为房子长度，$x_2$为房子宽度。我们可以设计特征房子面积$x&#x3D;x_1\times x_2$，令$h_{\theta}(x)&#x3D;\theta_0+\theta_1\times x$</p>
+<p>多项式回归：分析数据点的分布情况，我们可以使用某个特征的根号项、二次项、三次项来作为函数的类型来进行拟合。注意：在有多次项的时候，特征缩放显得更加重要。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241216170757054.png" alt="image-20241216170757054" style="zoom:50%;" />
+
+<h2 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h2><p>求解参数$\theta$的方法：（1）梯度下降、正规方程</p>
+<p>思想：令损失函数的偏导为0，解出$\theta$.</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241216191324398.png" alt="image-20241216191324398" style="zoom:50%;" />
+
+<p>方法：在数据中加入$x_0$特征这一列并初始化为1，将数据的每一项特征作为矩阵$X$的一列，所有数据的标签作为向量$y$。则$\theta&#x3D;(X^TX)^{-1}X^Ty$.</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241216191436816.png" alt="image-20241216191436816" style="zoom:50%;" />
+
+<p>梯度下降vs正规方程：（1）梯度下降需要选择学习率，并且需要迭代多次；而正规方程不需学习率，不需迭代。（2）梯度下降当n很大时仍有效，而正规方程时间复杂度较高。</p>
+<p>计算逆矩阵的复杂度为$O(n^3)$，当$n\le1e4$时使用正规方程，反之使用梯度下降。而且梯度下降在以后复杂方法中也可以求解，正规方程可能不可。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241216191836703.png" alt="image-20241216191836703" style="zoom:50%;" />
+
+<p>当（1）含有多余特征时，其中某些特征存在线性相关关系（2）特征太多时，样本数&lt;&#x3D;特征数。会出现矩阵$X^TX$不可逆的情况。尝试（1）删除多余的特征（2）删除某些特征或正则化</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241216200344136.png" alt="image-20241216200344136" style="zoom:50%;" />
+
+<h2 id="矢量化"><a href="#矢量化" class="headerlink" title="矢量化"></a>矢量化</h2><p>$h_\theta(x)&#x3D;\sum_{j&#x3D;0}^{n}\theta_jx_j$对应未矢量化的代码(for)，左半部分。</p>
+<p>$h_\theta(x)&#x3D;\theta^Tx$对应矢量化的代码，右半部分。运行效率更快。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241219165803645.png" alt="image-20241219165803645" style="zoom:50%;" />
+
+<p>在梯度下降更新参数$\theta$时，我们可以使用矢量化完成<strong>参数同步更新</strong>、<strong>缩短代码</strong>、<strong>更高效</strong>。</p>
+<p>我们可以将参数更新的公式记为$\theta:&#x3D;\theta-\alpha\delta$.这里$\theta\in\mathbb{R}^{n+1},\alpha\in\mathbb{R},\delta\in\mathbb{R}^{n+1}.$ where $\delta&#x3D;\frac{1}{m}\sum^{m}<em>{i&#x3D;1}{(h</em>{\theta}(x^{(i)})-y^{(i)})(x^{i})}$.</p>
+<p>下面说明为什么$\delta$是n+1维的向量。</p>
+<p>求和号中的$(h_{\theta}(x^{(i)})-y^{(i)})\in\mathbb{R}$表示用第i个样本的预测值-实际值，是一个数。$(x^{i})\in\mathbb{R}^{n+1}$表示第i个样本的特征向量，是一个向量。得证。</p>
+<p>将求和号展开，即$\sum^{m}<em>{i&#x3D;1}{(h</em>{\theta}(x^{(i)})-y^{(i)})(x^{i})}&#x3D;(h_{\theta}(x^{(1)})-y^{(1)})x^{(1)}+(h_{\theta}(x^{(2)})-y^{(2)})x^{(2)}+…$，其中$(h_{\theta}(x^{(1)})-y^{(1)}),(h_{\theta}(x^{(2)})-y^{(2)})$是数，$x^{(1)},x^{(2)}$是向量。</p>
+<p>其中将$x^{(i)}$展开为向量，只关注$x^{(i)}_0$的项，相乘相加即为$\delta_0$。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20241219165707439.png" alt="image-20241219165707439" style="zoom:50%;" />
                 
               </div>
             
@@ -309,6 +367,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">吴恩达机器学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="print-no-link">#机器学习</a>
+      
+    </div>
   
 </div>
 
@@ -318,8 +404,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2025/01/24/hello-world/</div>
+      <div>4.多元线性回归</div>
+      <div>http://example.com/2025/02/16/4 多元线性回归/</div>
     </div>
     <div class="license-meta">
       
@@ -331,7 +417,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月24日</div>
+          <div>2025年2月16日</div>
         </div>
       
       
@@ -358,6 +444,29 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/02/16/5%20Logistic%E5%9B%9E%E5%BD%92/" title="5.Logistic回归">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">5.Logistic回归</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/16/3%20%E7%BA%BF%E4%BB%A3%E7%9F%A5%E8%AF%86/" title="3.线代知识">
+                        <span class="hidden-mobile">3.线代知识</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 

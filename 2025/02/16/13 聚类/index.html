@@ -19,23 +19,41 @@
   <meta name="author" content="Dongxuan Liu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="13 聚类13.1 无监督学习简介在无监督学习中，我们的训练样本不包含任何标签$y$。算法将从训练样本中找到一些隐含在数据中的结构。     13.2 K-Means算法在聚类算法中，算法将无标签的数据划分成有紧密关系的簇。 K-Means算法是最热门的聚类算法，K-Means算法接收2个输入，分别是K（要划分的簇的个数）、无标签的训练数据集。算法过程如下：1)随机初始化聚类中心：随机选取K个点，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2025/01/24/hello-world/index.html">
+<meta property="og:title" content="13.聚类">
+<meta property="og:url" content="http://example.com/2025/02/16/13%20%E8%81%9A%E7%B1%BB/index.html">
 <meta property="og:site_name" content="Dxuan&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="13 聚类13.1 无监督学习简介在无监督学习中，我们的训练样本不包含任何标签$y$。算法将从训练样本中找到一些隐含在数据中的结构。     13.2 K-Means算法在聚类算法中，算法将无标签的数据划分成有紧密关系的簇。 K-Means算法是最热门的聚类算法，K-Means算法接收2个输入，分别是K（要划分的簇的个数）、无标签的训练数据集。算法过程如下：1)随机初始化聚类中心：随机选取K个点，">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-24T04:44:13.658Z">
-<meta property="article:modified_time" content="2025-04-15T06:01:12.182Z">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216155313379.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216155405876.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216160451739.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216161353157.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216164842116.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216164901926.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216164933177.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216165029983.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216163554320.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216170536157.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216171754415.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216200000313.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216201028721.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216201341304.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216211801393.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216213025911.png">
+<meta property="article:published_time" content="2025-02-16T02:00:13.000Z">
+<meta property="article:modified_time" content="2025-04-15T07:33:44.803Z">
 <meta property="article:author" content="Dongxuan Liu">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216155313379.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Hello World - Dxuan&#39;s Blog</title>
+  <title>13.聚类 - Dxuan&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +219,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="13.聚类"></span>
           
         </div>
 
@@ -212,8 +230,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-24 12:44" pubdate>
-          2025年1月24日 下午
+        <time datetime="2025-02-16 10:00" pubdate>
+          2025年2月16日 上午
         </time>
       </span>
     
@@ -225,7 +243,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          全文共有 18 字
+          全文共有 1.2k 字
         
       </span>
     
@@ -237,7 +255,7 @@
         
         
           <!-- compatible with older versions-->
-          预计阅读时间为 1 分钟
+          预计阅读时间为 10 分钟
         
       </span>
     
@@ -283,25 +301,59 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">13.聚类</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="13-聚类"><a href="#13-聚类" class="headerlink" title="13 聚类"></a>13 聚类</h1><h2 id="13-1-无监督学习简介"><a href="#13-1-无监督学习简介" class="headerlink" title="13.1 无监督学习简介"></a>13.1 无监督学习简介</h2><p>在无监督学习中，我们的训练样本不包含任何标签$y$。算法将从训练样本中找到一些隐含在数据中的结构。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216155313379.png" alt="image-20250216155313379" style="zoom:33%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216155405876.png" alt="image-20250216155405876" style="zoom:33%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<h2 id="13-2-K-Means算法"><a href="#13-2-K-Means算法" class="headerlink" title="13.2 K-Means算法"></a>13.2 K-Means算法</h2><p>在聚类算法中，算法将无标签的数据划分成有紧密关系的簇。</p>
+<p>K-Means算法是最热门的聚类算法，K-Means算法接收2个输入，分别是K（要划分的簇的个数）、无标签的训练数据集。算法过程如下：<br>1)随机初始化聚类中心：随机选取K个点，称为聚类中心。<br>2)分配到簇：对于m个训练样本，计算到K个中心点的距离，然后将其划分到距离最近的中心点对应的簇中。即$c^{(i)}:&#x3D;\underset{k}{min}||x^{(i)}-u_k||^2,k\in[1,K]$<br>3)移动聚类中心：对于K个簇，分别计算每一个簇中的点的平均值，将该簇所关联的中心点移动到平均值的位置。这里的$u_k$是一个n维向量。(对于没有点的簇，可以直接删除该中心点或者重新初始化中心点)<br>4)重复2-3步骤，直至中心点不再变化。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216160451739.png" alt="image-20250216160451739" style="zoom:33%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216161353157.png" alt="image-20250216161353157" style="zoom:33%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>下面是一个K-Means算法的示例：</p>
+<p>初始化随机的中心点，计算距离后分类，然后移动中心点</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216164842116.png" alt="image-20250216164842116" style="zoom: 67%;" />
 
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216164901926.png" alt="image-20250216164901926" style="zoom:67%;" />
+
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216164933177.png" alt="image-20250216164933177" style="zoom:67%;" />
+
+<p>多次迭代后，最终的聚类结果如下：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216165029983.png" alt="image-20250216165029983" style="zoom:50%;" />
+
+<p>在没有非常明显组群的情况下，也可以使用K-Means：对于右图是不同人的身高体重，我们想要设计S、M、L三种型号的衬衫，那么就可以将数据划分成3类，每类就对应一种衬衫型号。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216163554320.png" alt="image-20250216163554320" style="zoom:33%;" />
+
+<h2 id="13-3-优化目标"><a href="#13-3-优化目标" class="headerlink" title="13.3 优化目标"></a>13.3 优化目标</h2><p>了解K-Means算法的代价函数有助于理解算法过程，也可以借助它帮助K-Means算法找到更好的簇，并且避免局部最优解。</p>
+<p>K-Means的代价函数为：$J(c^{(1)},…,c^{(m)},u_1,…,u_K)&#x3D;\frac{1}{m}\sum_{i&#x3D;1}^{m}||x^{(i)}-u_{c^{(i)}}||^2$.我们要找到参数$c^{(1)},…,c^{(m)}$, $u_1,…,u_K$使得代价函数$J$最小。即要最小化所有数据点与其所关联的聚类中心点之间的距离之和。该代价函数也称为失真代价函数（distortion cost function）</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216170536157.png" alt="image-20250216170536157" style="zoom:33%;" />
+
+<p>可以证明：K-Means算法中分配到簇的步骤就是在最小化$J$关于变量$c$的代价，移动聚类中心就是在最小化$J$关于变量$u$的代价。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216171754415.png" alt="image-20250216171754415" style="zoom:33%;" />
+
+<h2 id="13-4-随机初始化"><a href="#13-4-随机初始化" class="headerlink" title="13.4 随机初始化"></a>13.4 随机初始化</h2><p>随机初始化聚类中心点的方法：1.选择K&lt;m，即聚类中心点的个数要小于训练样本的数量 2.随机选择K个训练样本作为聚类中心。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216200000313.png" alt="image-20250216200000313" style="zoom:33%;" />
+
+<p>随机初始化的状态不同，K-Means最终可能会得到不同的结果。如果初始化不好，有可能会停留在一个局部最优处（如下图右下角两种局部最优的情况）。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216201028721.png" alt="image-20250216201028721" style="zoom:33%;" />
+
+<p>为了避免算法陷入局部最优解，我们可以运行多次K-Means算法（通常运行50<del>1000次），每一次都重新随机初始化，最后比较多次运行 K-Means的结果，选择代价函数最小的结果。这种方法在K较小的时候(K&#x3D;2</del>10)可行，如果K较大可能不会有明显地改善。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216201341304.png" alt="image-20250216201341304" style="zoom:33%;" />
+
+<h2 id="13-5-选择聚类数量"><a href="#13-5-选择聚类数量" class="headerlink" title="13.5 选择聚类数量"></a>13.5 选择聚类数量</h2><p>没有最好的选择聚类数的方法，通常是需要根据不同的问题人工选择。需要思考运用 K-Means算法的动机，然后选择能最好服务于该目的的聚类数。</p>
+<p>方法一：肘部法则。通过改变聚类数K，画出代价函数$J$随K值变化的曲线，可能会得到一条类似肘部的曲线。如左图，在$K&#x3D;3$的左侧代价函数$J$下降较快，而在$K&#x3D;3$的右侧代价函数$J$下降缓慢。$K&#x3D;3$这个点就是肘点，在此之后，代价函数$J$就下降的非常慢，那么我们就选K &#x3D; 3。</p>
+<p>但有时也会出现右图的情况，代价函数曲线比较平滑，没有肘点。这时就需要人工选择。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216211801393.png" alt="image-20250216211801393" style="zoom:33%;" />
+
+<p>方法二：考虑下游任务的目的。通常聚类算法服务于下游任务，可以根据下游任务的目的，看哪个参数K能更好地应用于下游任务。例如：是生产5种尺寸的衬衫让衬衫更合身，还是生产3种尺寸的衬衫让衬衫价格更便宜。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216213025911.png" alt="image-20250216213025911" style="zoom:33%;" />
                 
               </div>
             
@@ -309,6 +361,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">吴恩达机器学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="print-no-link">#机器学习</a>
+      
+    </div>
   
 </div>
 
@@ -318,8 +398,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2025/01/24/hello-world/</div>
+      <div>13.聚类</div>
+      <div>http://example.com/2025/02/16/13 聚类/</div>
     </div>
     <div class="license-meta">
       
@@ -331,7 +411,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月24日</div>
+          <div>2025年2月16日</div>
         </div>
       
       
@@ -358,6 +438,29 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/02/16/14%20%E9%99%8D%E7%BB%B4/" title="14.降维">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">14.降维</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/16/12%20%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/" title="12.支持向量机">
+                        <span class="hidden-mobile">12.支持向量机</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 

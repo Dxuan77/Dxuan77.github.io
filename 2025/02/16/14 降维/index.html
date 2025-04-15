@@ -19,23 +19,46 @@
   <meta name="author" content="Dongxuan Liu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="14 降维14.1 降维的动机一：数据压缩下面介绍第二种无监督学习问题：降维。降维的一个作用是数据压缩，可以减小数据占用内存和磁盘的空间，还可以加快算法速度。 例如：假设我们用两个特征来描述同一个物体的长度，$x_1$的单位是厘米，$x_2$的单位是英尺。这将导致高度冗余，所以需要进行降维到一维。我们将二维的数据点$x^{(i)}&#x3D;[x_1^{(i)};x_2^{(i)}]\in\mat">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2025/01/24/hello-world/index.html">
+<meta property="og:title" content="14.降维">
+<meta property="og:url" content="http://example.com/2025/02/16/14%20%E9%99%8D%E7%BB%B4/index.html">
 <meta property="og:site_name" content="Dxuan&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="14 降维14.1 降维的动机一：数据压缩下面介绍第二种无监督学习问题：降维。降维的一个作用是数据压缩，可以减小数据占用内存和磁盘的空间，还可以加快算法速度。 例如：假设我们用两个特征来描述同一个物体的长度，$x_1$的单位是厘米，$x_2$的单位是英尺。这将导致高度冗余，所以需要进行降维到一维。我们将二维的数据点$x^{(i)}&#x3D;[x_1^{(i)};x_2^{(i)}]\in\mat">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-24T04:44:13.658Z">
-<meta property="article:modified_time" content="2025-04-15T06:01:12.182Z">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216214729237.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216215642567.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216221800695.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216222130349.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216222403494.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216223101545.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216223810187.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216224416786.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217195243781.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217200035262.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217200727078.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217201658366.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217202819199.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217212551347.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217204202445.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217205504520.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217211046671.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217214233137.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217215715285.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217220307209.png">
+<meta property="og:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217220725755.png">
+<meta property="article:published_time" content="2025-02-16T02:00:14.000Z">
+<meta property="article:modified_time" content="2025-04-15T07:33:53.435Z">
 <meta property="article:author" content="Dongxuan Liu">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216214729237.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Hello World - Dxuan&#39;s Blog</title>
+  <title>14.降维 - Dxuan&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +224,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="14.降维"></span>
           
         </div>
 
@@ -212,8 +235,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-24 12:44" pubdate>
-          2025年1月24日 下午
+        <time datetime="2025-02-16 10:00" pubdate>
+          2025年2月16日 上午
         </time>
       </span>
     
@@ -225,7 +248,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          全文共有 18 字
+          全文共有 2k 字
         
       </span>
     
@@ -237,7 +260,7 @@
         
         
           <!-- compatible with older versions-->
-          预计阅读时间为 1 分钟
+          预计阅读时间为 17 分钟
         
       </span>
     
@@ -283,25 +306,88 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">14.降维</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="14-降维"><a href="#14-降维" class="headerlink" title="14 降维"></a>14 降维</h1><h2 id="14-1-降维的动机一：数据压缩"><a href="#14-1-降维的动机一：数据压缩" class="headerlink" title="14.1 降维的动机一：数据压缩"></a>14.1 降维的动机一：数据压缩</h2><p>下面介绍第二种无监督学习问题：降维。降维的一个作用是数据压缩，可以减小数据占用内存和磁盘的空间，还可以加快算法速度。</p>
+<p>例如：假设我们用两个特征来描述同一个物体的长度，$x_1$的单位是厘米，$x_2$的单位是英尺。这将导致高度冗余，所以需要进行降维到一维。我们将二维的数据点$x^{(i)}&#x3D;[x_1^{(i)};x_2^{(i)}]\in\mathbb{R}^2$投影到绿色的直线上，根据各点在投影直线上的位置$z^{(i)}\in\mathbb{R}$作为新特征完成降维。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216214729237.png" alt="image-20250216214729237" style="zoom:33%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>将数据从三维降至二维：观察数据点的分布大都集中在一个二维平面上，我们可以将三维向量投影到一个二维平面上，降至二维的特征向量。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216215642567.png" alt="image-20250216215642567" style="zoom:33%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<p>事实工作中，不同的团队可能会给你几百或成千上万的特征，其中很容易出现冗余特征。这时候就可以使用降维减少特征冗余。</p>
+<h2 id="14-2-降维的动机二：数据可视化"><a href="#14-2-降维的动机二：数据可视化" class="headerlink" title="14.2 降维的动机二：数据可视化"></a>14.2 降维的动机二：数据可视化</h2><p>降维的另一个作用是数据可视化，可以帮助我们优化学习算法。</p>
+<p>例如：我们有关于每个国家的数据，特征向量$x^{(i)}\in\mathbb{R}^{50}$，50维的数据是不好可视化，不容易进行数据分析的，将其降至2维，便可以将其可视化了。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216221800695.png" alt="image-20250216221800695" style="zoom:33%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216222130349.png" alt="image-20250216222130349" style="zoom:33%;" />
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>将数据降维至低维度，这样我们就可以将数据进行可视化，并更好的理解这些数据。但这样做新特征的意义通常需要由我们自己去发现。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216222403494.png" alt="image-20250216222403494" style="zoom:33%;" />
 
+<h2 id="14-3-PCA问题的公式描述"><a href="#14-3-PCA问题的公式描述" class="headerlink" title="14.3 PCA问题的公式描述"></a>14.3 PCA问题的公式描述</h2><p>对于降维算法，比较常见的是主成分分析方法（PCA）。</p>
+<p>例如，我们有二维的特征向量，我们想把它降维至一维。即我们要找一条投影直线完成降维。PCA做的就是找一个低维的直线&#x2F;平面&#x2F;其他维的子空间，然后将数据投影在上面，使蓝色线段长度平方最小。这些蓝色线段长度也被称为投影误差。如图：PCA会更倾向于找到红色的直线，因为相比于粉色直线，红色线的投影误差更小。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216223101545.png" alt="image-20250216223101545" style="zoom:33%;" />
+
+<p>PCA问题：将n维数据降至k维，目标是找到向量$u^{(1)},u^{(2)},…,u^{(k)}$，将数据点投影到上面，使得总的投影误差最小。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216223810187.png" alt="image-20250216223810187" style="zoom:33%;" />
+
+<p>PCA 与 线性回归 的比较：</p>
+<p>PCA最小化的是投射误差（垂直距离），不作任何预测。线性回归最小化的是预测误差（竖直距离），目的是预测结果。如图：左边的是线性回归的误差(垂直于横轴投影，预测值与真实标签的差值)，右边则是主要成分分析的误差(垂直于斜线投影)。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250216224416786.png" alt="image-20250216224416786" style="zoom:33%;" />
+
+<h2 id="14-4-PCA算法"><a href="#14-4-PCA算法" class="headerlink" title="14.4 PCA算法"></a>14.4 PCA算法</h2><p>在进行PCA算法之前，需要数据预处理，进行特征缩放&#x2F;均值归一化。</p>
+<p><strong>1）均值归一化</strong></p>
+<p>计算出所有特征的均值，然后令 $x_j &#x3D; x_j − u_j$ 。如果特征是在不同的数量级上，还需要将其除以标准差 $\sigma^2$ 。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217195243781.png" alt="image-20250217195243781" style="zoom:33%;" />
+
+<p>对于PCA算法，我们需要找到一个低维子空间，用来投影数据。那么如何找到低维子空间的向量$u^{(1)},u^{(2)}…$以及新特征向量$z$呢？</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217200035262.png" alt="image-20250217200035262" style="zoom:33%;" />
+
+<p><strong>2）计算协方差矩阵sigma$\Sigma$</strong></p>
+<p>这里协方差矩阵$\Sigma\in\mathbb{R}^{n\times n}$</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217200727078.png" alt="image-20250217200727078" style="zoom:33%;" />
+
+<p><strong>3）计算协方差矩阵$\Sigma$的特征向量</strong></p>
+<p>我们可以利用奇异值分解(singular value decomposition)来得到特则向量矩阵 U，调用方式为 [U， S，V] &#x3D; svd(sigma) 。我们想要从n维降至k维，那么就取矩阵U的前k列作为一个新的矩阵$U_{reduce}\in\mathbb{R}^{n\times k}$，我们的新特征向量$z^{(i)}&#x3D;(U_{reduce})^Tx^{(i)}$, $z^{(i)}\in \mathbb{R}^{k\times 1}$</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217201658366.png" alt="image-20250217201658366" style="zoom:33%;" />
+
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217202819199.png" alt="image-20250217202819199" style="zoom:33%;" />
+
+<h2 id="14-5-重建原始特征"><a href="#14-5-重建原始特征" class="headerlink" title="14.5 重建原始特征"></a>14.5 重建原始特征</h2><p>如何从压缩后的低维表示$z^{(i)}$映射回原来高维的数据$x^{(i)}$呢？即如何根据压缩后的数据去重建原始数据?</p>
+<p>例如：原始数据$x^{(i)}$是二维，$z^{(i)}$是一维，$z&#x3D;U_{reduce}^Tx$，则相反的方程为$x_{approx}&#x3D;U_{reduce}z$，这里的$x_{approx}$是投影之后的点，通过此方程可以得到投影点的坐标。又因为$x_{approx}\approx x$，所以可以通过此方法得到原始数据的一个近似表示。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217212551347.png" alt="image-20250217212551347" style="zoom:33%;" />
+
+<h2 id="14-6-选择主成分的数量k"><a href="#14-6-选择主成分的数量k" class="headerlink" title="14.6 选择主成分的数量k"></a>14.6 选择主成分的数量k</h2><p>主成分分析最小化投射的平均均方误差，怎么选择适当降维目标 k 值（即主成分的数量）呢？我们的目标是：<strong>在『平均均方误差与总变差的比例尽可能小』的情况下，选择尽可能小的 k 值。</strong></p>
+<p>我们定义平均均方投影误差，总变差（也可以理解为样本和全零点之间的距离）如下：如果希望比例小于 1%， 就意味着原本数据的偏差有 99% 都保留下来了。<br>通常95%到99%是最常用的取值范围。（注：对于许多数据集，通常可以在保留大部分差异性的同时大幅降低数据的维度。这是因为大部分现实数据的许多特征变量都是高度相关的。）</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217204202445.png" alt="image-20250217204202445" style="zoom:33%;" />
+
+<p>具体的做法是：</p>
+<p>我们可以从k&#x3D;1开始，然后进行主成分分析，计算得到$U_{reduce}$和$z$，然后计算比例是否小于0.01。若不是令k&#x3D;2，重复此过程，直至找到可以让比例小于0.01的最小的k值。</p>
+<p>但上面的方法是低效的。还有更好的方法，我们进行奇异值分解时返回了一个矩阵$S\in\mathbb{R}^{n\times n}$, 矩阵$S$是一个对角矩阵，由$\Sigma$的特征值组成，对角线上的特征值非负且按降序排列。因为我们的目的是从 n 维降到 k 维，也就是选出这 n 个特征中最重要的 k 个，也就是选出特征值最大的 k 个。所以得到矩阵 S 后，我们可以直接用它来计算平均均方误差与总变差的比例。如右图公式，每次改变k，只需要重新计算分子即可:</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217205504520.png" alt="image-20250217205504520" style="zoom:33%;" />
+
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217211046671.png" alt="image-20250217211046671" style="zoom:33%;" />
+
+<h2 id="14-7-PCA的应用建议"><a href="#14-7-PCA的应用建议" class="headerlink" title="14.7 PCA的应用建议"></a>14.7 PCA的应用建议</h2><p>假设我们有m张100*100像素的图片，即特征向量$x^{(i)}\in\mathbb{R}^{10000}$，使用PCA算法的步骤如下：1.使用PCA算法将特征向量$x^{(i)}$压缩到1000个特征。2.对压缩后的训练集运行学习算法。3.在预测时，采用之前学习得到的 $U_{reduce}$ 将输入的特征 $x$ 转换成特征向量 $z$ ，然后再进行预测.</p>
+<p>注意：映射关系只能在训练集上运行PCA学习得到，验证集和测试集也采用对训练集学习得来的$U_{reduce}$.</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217214233137.png" alt="image-20250217214233137" style="zoom:33%;" />
+
+<p>正确用法：下图总结了PCA的应用以及在各应用上如何选择k的值：</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217215715285.png" alt="image-20250217215715285" style="zoom:33%;" />
+
+<p>补充：PCA可以加快算法运行速度。</p>
+<p>错误用法：</p>
+<p>1.使用PCA减少特征的数量，从而用于减少过拟合。</p>
+<p>这样做非常不好的，不如使用正则化处理。原因在于 PCA 只是近似地丢弃掉一些特征，它并不考虑任何与结果变量$y$有关的信息，因此可能会丢失非常重要的特征。而当进行正则化处理时，会考虑到结果变量$y$，不会丢掉重要的数据。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217220307209.png" alt="image-20250217220307209" style="zoom:33%;" />
+
+<p>2.在项目开始时，就将PCA考虑在项目计划中。</p>
+<p>最好还是从所有原始特征开始，只在有必要的时候(算法运行太慢或者占用太多内存)才考虑采用 PCA。因为PCA会影响模型精确度。</p>
+<img src="C:\Users\Dongxuan\AppData\Roaming\Typora\typora-user-images\image-20250217220725755.png" alt="image-20250217220725755" style="zoom:33%;" />
                 
               </div>
             
@@ -309,6 +395,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%90%B4%E6%81%A9%E8%BE%BE%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="category-chain-item">吴恩达机器学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="print-no-link">#机器学习</a>
+      
+    </div>
   
 </div>
 
@@ -318,8 +432,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2025/01/24/hello-world/</div>
+      <div>14.降维</div>
+      <div>http://example.com/2025/02/16/14 降维/</div>
     </div>
     <div class="license-meta">
       
@@ -331,7 +445,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月24日</div>
+          <div>2025年2月16日</div>
         </div>
       
       
@@ -358,6 +472,29 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/02/16/15%20%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B/" title="15.异常检测">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">15.异常检测</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/16/13%20%E8%81%9A%E7%B1%BB/" title="13.聚类">
+                        <span class="hidden-mobile">13.聚类</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 
